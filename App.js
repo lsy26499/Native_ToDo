@@ -28,16 +28,4 @@ const App = () => {
 	);
 };
 
-const styles = StyleSheet.create({
-	defaultFontSetting: {
-		fontFamily: '',
-	},
-	container: {
-		flex: 1,
-		backgroundColor: '#fff',
-		alignItems: 'center',
-		justifyContent: 'center',
-	},
-});
-
 export default App;
