@@ -1,34 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import AsyncStorage from '@react-native-community/async-storage';
+import { connect } from 'react-redux';
+import { setIsLogin } from '../actions';
 
-const Setting = () => {
-	const [isLogin, setIsLogin] = useState(false);
-
-	const storeData = async () => {
-		try {
-			setIsLogin((prevState) => !prevState);
-			await AsyncStorage.setItem('isLogin', JSON.stringify(isLogin));
-		} catch (error) {
-			console.log(error);
-		}
-	};
-
-	const getData = async () => {
-		const data = await AsyncStorage.getItem('isLogin');
-		setIsLogin(data);
-	};
-
-	useEffect(() => {
-		getData();
-	}, []);
-
+const Setting = ({ isLogin, setIsLogin }) => {
 	return (
 		<View style={styles.container}>
 			<TouchableOpacity
 				style={styles.loginButton}
 				onPress={() => {
-					storeData();
+					isLogin ? setIsLogin(false) : setIsLogin(true);
 				}}
 			>
 				<Text style={styles.defaultFontSetting}>
@@ -58,4 +39,16 @@ const styles = StyleSheet.create({
 	},
 });
 
-export default Setting;
+const mapStateToProps = (state) => {
+	return {
+		isLogin: state.isLoginReducer.isLogin,
+	};
+};
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		setIsLogin: (isLogin) => dispatch(setIsLogin(isLogin)),
+	};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Setting);

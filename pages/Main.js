@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import ToDo from '../components/ToDo';
 import { connect } from 'react-redux';
-import { addToDos, deleteToDos } from '../actions';
+import { addToDos } from '../actions';
 
 const Main = ({ navigation, toDos, addToDos }) => {
 	const [value, setValue] = useState('');
