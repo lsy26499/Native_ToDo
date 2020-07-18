@@ -7,17 +7,11 @@ import {
 	TouchableOpacity,
 } from 'react-native';
 import ToDo from '../components/ToDo';
+import { connect } from 'react-redux';
+import { addToDos, deleteToDos } from '../actions';
 
-const Main = ({ navigation }) => {
-	const [toDos, setToDos] = useState([]);
+const Main = ({ navigation, toDos, addToDos }) => {
 	const [value, setValue] = useState('');
-
-	const deleteToDo = (idx) => {
-		setToDos((prevState) => [
-			...prevState.slice(0, idx),
-			...prevState.slice(idx + 1),
-		]);
-	};
 
 	return (
 		<View style={styles.container}>
@@ -33,7 +27,7 @@ const Main = ({ navigation }) => {
 				<TouchableOpacity
 					style={styles.button}
 					onPress={() => {
-						setToDos((prevState) => [...prevState, value]);
+						addToDos(value);
 						setValue('');
 					}}
 				>
@@ -45,7 +39,6 @@ const Main = ({ navigation }) => {
 					<ToDo
 						toDo={toDo}
 						key={idx}
-						deleteToDo={deleteToDo}
 						idx={idx}
 						navigation={navigation}
 					/>
@@ -96,4 +89,16 @@ const styles = StyleSheet.create({
 	},
 });
 
-export default Main;
+const mapStateToProps = (state) => {
+	return {
+		toDos: state.toDoReducer.toDos,
+	};
+};
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		addToDos: (toDo) => dispatch(addToDos(toDo)),
+	};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main);

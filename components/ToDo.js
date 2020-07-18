@@ -1,7 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { connect } from 'react-redux';
+import { deleteToDos } from '../actions';
 
-const ToDo = ({ toDo, deleteToDo, idx, navigation }) => {
+const ToDo = ({ toDo, idx, navigation, deleteToDos }) => {
 	return (
 		<TouchableOpacity
 			style={styles.container}
@@ -17,7 +19,7 @@ const ToDo = ({ toDo, deleteToDo, idx, navigation }) => {
 			</Text>
 			<TouchableOpacity
 				style={styles.delete}
-				onPress={() => deleteToDo(idx)}
+				onPress={() => deleteToDos(idx)}
 			>
 				<Text style={styles.defaultFontSetting}>DEL</Text>
 			</TouchableOpacity>
@@ -48,4 +50,10 @@ const styles = StyleSheet.create({
 	},
 });
 
-export default ToDo;
+const mapDispatchToProps = (dispatch) => {
+	return {
+		deleteToDos: (idx) => dispatch(deleteToDos(idx)),
+	};
+};
+
+export default connect(null, mapDispatchToProps)(ToDo);
