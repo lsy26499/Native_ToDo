@@ -9,6 +9,7 @@ import {
 import ToDo from '../components/ToDo';
 
 const Main = () => {
+	const [toDos, setToDos] = useState([]);
 	const [value, setValue] = useState('');
 
 	return (
@@ -22,12 +23,20 @@ const Main = () => {
 					onChangeText={(text) => setValue(text)}
 					value={value}
 				/>
-				<TouchableOpacity style={styles.button}>
+				<TouchableOpacity
+					style={styles.button}
+					onPress={() => {
+						setToDos((prevState) => [...prevState, value]);
+						setValue('');
+					}}
+				>
 					<Text style={styles.defaultFontSetting}>ADD</Text>
 				</TouchableOpacity>
 			</View>
 			<View style={styles.toDo}>
-				<ToDo />
+				{toDos.map((toDo, idx) => (
+					<ToDo toDo={toDo} key={idx} />
+				))}
 			</View>
 		</View>
 	);
@@ -42,14 +51,12 @@ const styles = StyleSheet.create({
 	},
 	container: {
 		flex: 1,
-		backgroundColor: '#fff',
 		alignItems: 'center',
 		justifyContent: 'center',
 		paddingBottom: 50,
 	},
 	form: {
 		flex: 2,
-		backgroundColor: '#fff',
 		alignItems: 'center',
 		justifyContent: 'flex-end',
 		paddingBottom: 50,

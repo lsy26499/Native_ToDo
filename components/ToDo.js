@@ -1,11 +1,12 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-const ToDo = () => {
+const ToDo = ({ toDo }) => {
 	return (
 		<View style={styles.container}>
-			<Text style={styles.defaultFontSetting}>To Do</Text>
-			<Text style={styles.defaultFontSetting}>To Do</Text>
+			<Text style={{ ...styles.defaultFontSetting, ...styles.toDo }}>
+				{toDo}
+			</Text>
 		</View>
 	);
 };
@@ -16,8 +17,11 @@ const styles = StyleSheet.create({
 	},
 	container: {
 		flexDirection: 'column',
-		alignItems: 'flex-start',
+		alignItems: 'center',
 		justifyContent: 'flex-start',
+	},
+	toDo: {
+		fontSize: 20,
 	},
 });
 
