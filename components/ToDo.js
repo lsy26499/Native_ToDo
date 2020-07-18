@@ -1,9 +1,17 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 
-const ToDo = ({ toDo, deleteToDo, idx }) => {
+const ToDo = ({ toDo, deleteToDo, idx, navigation }) => {
 	return (
-		<View style={styles.container}>
+		<TouchableOpacity
+			style={styles.container}
+			onPress={() => {
+				navigation.navigate('Detail', {
+					toDo,
+					id: idx,
+				});
+			}}
+		>
 			<Text style={{ ...styles.defaultFontSetting, ...styles.toDo }}>
 				{toDo}
 			</Text>
@@ -13,7 +21,7 @@ const ToDo = ({ toDo, deleteToDo, idx }) => {
 			>
 				<Text style={styles.defaultFontSetting}>DEL</Text>
 			</TouchableOpacity>
-		</View>
+		</TouchableOpacity>
 	);
 };
 

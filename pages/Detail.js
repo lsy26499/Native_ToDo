@@ -1,10 +1,26 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
-const Detail = () => {
+const Detail = ({ route }) => {
+	const {
+		params: { id, toDo },
+	} = route;
+
 	return (
 		<View style={styles.container}>
-			<Text style={styles.defaultFontSetting}>Detail</Text>
+			<Text style={{ ...styles.defaultFontSetting, ...styles.toDo }}>
+				{id}번 : {toDo}
+			</Text>
+			<TouchableOpacity style={styles.delete}>
+				<Text
+					style={{
+						...styles.defaultFontSetting,
+						...styles.deleteText,
+					}}
+				>
+					DEL
+				</Text>
+			</TouchableOpacity>
 		</View>
 	);
 };
@@ -15,9 +31,23 @@ const styles = StyleSheet.create({
 	},
 	container: {
 		flex: 1,
-		backgroundColor: '#fff',
 		alignItems: 'center',
 		justifyContent: 'center',
+	},
+	toDo: {
+		fontSize: 35,
+		paddingBottom: 20,
+	},
+	delete: {
+		justifyContent: 'center',
+		backgroundColor: '#dfe4ea',
+		paddingBottom: 3,
+		paddingHorizontal: 4,
+		borderRadius: 3,
+	},
+	deleteText: {
+		fontSize: 23,
+		fontWeight: 'bold',
 	},
 });
 

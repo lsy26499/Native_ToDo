@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { StyleSheet, Text, View, Button } from 'react-native';
 
-import Main from './pages/Main';
 import Setting from './pages/Setting';
+
+import MainStackNavigator from './Stack/MainStackNavigator';
 
 const Tab = createBottomTabNavigator();
 
@@ -21,7 +21,7 @@ const App = () => {
 					labelPosition: 'beside-icon',
 				}}
 			>
-				<Tab.Screen name='Main' component={Main} />
+				<Tab.Screen name='Main' component={MainStackNavigator} />
 				<Tab.Screen name='Setting' component={Setting} />
 			</Tab.Navigator>
 		</NavigationContainer>

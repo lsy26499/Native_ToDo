@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import ToDo from '../components/ToDo';
 
-const Main = () => {
+const Main = ({ navigation }) => {
 	const [toDos, setToDos] = useState([]);
 	const [value, setValue] = useState('');
 
@@ -47,6 +47,7 @@ const Main = () => {
 						key={idx}
 						deleteToDo={deleteToDo}
 						idx={idx}
+						navigation={navigation}
 					/>
 				))}
 			</View>
