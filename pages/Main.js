@@ -12,6 +12,13 @@ const Main = () => {
 	const [toDos, setToDos] = useState([]);
 	const [value, setValue] = useState('');
 
+	const deleteToDo = (idx) => {
+		setToDos((prevState) => [
+			...prevState.slice(0, idx),
+			...prevState.slice(idx + 1),
+		]);
+	};
+
 	return (
 		<View style={styles.container}>
 			<View style={styles.form}>
@@ -35,7 +42,12 @@ const Main = () => {
 			</View>
 			<View style={styles.toDo}>
 				{toDos.map((toDo, idx) => (
-					<ToDo toDo={toDo} key={idx} />
+					<ToDo
+						toDo={toDo}
+						key={idx}
+						deleteToDo={deleteToDo}
+						idx={idx}
+					/>
 				))}
 			</View>
 		</View>
