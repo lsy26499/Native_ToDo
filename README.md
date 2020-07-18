@@ -1,8 +1,8 @@
-# Native-ToDo
+# 📱 Native-ToDo
 
 final project 시작 전 새로운 기술 스택 연습을 위한 미니프로젝트입니다.
 
-## Tech Stack
+## 💻 Stack
 
 -   React Native
 -   Expo
@@ -11,7 +11,7 @@ final project 시작 전 새로운 기술 스택 연습을 위한 미니프로�
 -   Redux
 -   Redux Persist
 
-## Features
+## ✨ Features
 
 -   [x] Main / Setting 페이지의 tab navigator 적용
 -   [x] Main 페이지 내부에서 To Do 작성
