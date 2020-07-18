@@ -3,9 +3,8 @@ import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import Setting from './pages/Setting';
-
 import MainStackNavigator from './Stack/MainStackNavigator';
+import SettingStackNavigator from './Stack/SettingStackNavigator';
 
 const Tab = createBottomTabNavigator();
 
@@ -22,7 +21,7 @@ const App = () => {
 				}}
 			>
 				<Tab.Screen name='Main' component={MainStackNavigator} />
-				<Tab.Screen name='Setting' component={Setting} />
+				<Tab.Screen name='Setting' component={SettingStackNavigator} />
 			</Tab.Navigator>
 		</NavigationContainer>
 	);
