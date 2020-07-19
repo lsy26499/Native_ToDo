@@ -7,9 +7,10 @@ const initialState = {
 const toDosReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case ADD_TODOS: {
+			console.log(action.toDo);
 			return {
 				...state,
-				toDos: [...state.toDos, ...action.toDo],
+				toDos: [...state.toDos, action.toDo],
 			};
 		}
 		case DELETE_TODOS: {
