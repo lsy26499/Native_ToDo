@@ -21,6 +21,8 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "mini todo-app using react native, react navigator, redux",
+    "githubUrl": "https://github.com/lsy26499/Native_ToDo"
   }
 }
