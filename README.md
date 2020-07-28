@@ -10,6 +10,7 @@ final project 시작 전 새로운 기술 스택 연습을 위한 미니프로�
 -   Async Storage
 -   Redux
 -   Redux Persist
+-   FireBase
 
 ## ✨ Features
 
@@ -19,3 +20,6 @@ final project 시작 전 새로운 기술 스택 연습을 위한 미니프로�
 -   [x] Async Storage를 이용해 Setting 페이지에서의 로그인 유지 (master branch)
 -   [x] state들에 전체적으로 Redux 적용 (redux branch)
 -   [x] 로그인 유지 기능을 Redux Persist를 이용해 리팩토링 (redux branch)
+-   [x] FireBase 구글 로그인
+-   [x] FireBase 없이 구글 로그인
+-   [ ] 네이버 로그인
