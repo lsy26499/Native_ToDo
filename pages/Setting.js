@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import * as Facebook from 'expo-facebook';
+import axios from 'axios';
 
 const Setting = () => {
     const [isLogin, setIsLogin] = useState(false);
@@ -14,8 +15,10 @@ const Setting = () => {
 
             if (data.type === 'success') {
                 // Get the user's name using Facebook's Graph API
-                console.log(data);
-                // const response = await fetch(`https://graph.facebook.com/me?access_token=${token}`);
+                const response = await axios.get(
+                    `https://graph.facebook.com/me?access_token=${data.token}`
+                );
+                console.log(response);
                 // Alert.alert('Logged in!', `Hi ${(await response.json()).name}!`);
             } else {
                 // type === 'cancel'
